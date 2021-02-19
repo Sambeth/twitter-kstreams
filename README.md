@@ -10,3 +10,9 @@ keys and secrets
 docker-compose --env-file ./env/.env.dev up -d
 ```
 
+# Project Scope
+- [x] Setup up scala/sbt project
+- [x] Set up docker with zookeeper, broker and schema registry
+- [x] Set up environment variables
+- [x] Get started with twitter streams api
+
