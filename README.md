@@ -15,4 +15,6 @@ docker-compose --env-file ./env/.env.dev up -d
 - [x] Set up docker with zookeeper, broker and schema registry
 - [x] Set up environment variables
 - [x] Get started with twitter streams api
+- [ ] Build simple kafka producer with twitter streams api
+- [ ] Build avro schema-based kafka producer with twitter streams api
 
