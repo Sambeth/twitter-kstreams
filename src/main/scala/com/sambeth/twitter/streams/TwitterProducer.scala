@@ -1,7 +1,8 @@
+package com.sambeth.twitter.streams
+
 import com.danielasfregola.twitter4s.TwitterStreamingClient
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.entities.streaming.StreamingMessage
-
 
 object TwitterProducer extends App {
 
