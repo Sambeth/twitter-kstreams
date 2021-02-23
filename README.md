@@ -30,6 +30,8 @@ docker-compose --env-file ./env/.env.dev up -d
 - [x] Set up docker with zookeeper, broker and schema registry
 - [x] Set up environment variables
 - [x] Get started with twitter streams api
-- [x] Seup up docker for kstreams app
+- [x] Setup up docker for kstreams app
+- [ ] Figure out how to push image to docker hub
+- [ ] Figure out how to autobuild image as update pushed to github
 - [ ] Build simple kafka producer with twitter streams api
 - [ ] Build avro schema-based kafka producer with twitter streams api
