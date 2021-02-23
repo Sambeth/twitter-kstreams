@@ -9,6 +9,9 @@
 # vs code
 .vscode
 
+# envs
+env/.env.dev
+
 # sbt
 # (may want to keep parts of 'project')
 bin/
