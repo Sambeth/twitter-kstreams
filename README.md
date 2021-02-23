@@ -30,7 +30,8 @@ docker-compose up -d
 - [x] Set up environment variables
 - [x] Get started with twitter streams api
 - [x] Setup up docker for kstreams app
-- [ ] Figure out how to push image to docker hub
-- [ ] Figure out how to autobuild image as update pushed to github
+- [x] Figure out how to push image to docker hub
+- [x] Figure out how to autobuild image as update pushed to github
 - [ ] Build simple kafka producer with twitter streams api
+- [ ] Figure out data you will need from stream filtered data
 - [ ] Build avro schema-based kafka producer with twitter streams api and schema registry
