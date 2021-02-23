@@ -38,3 +38,4 @@ docker-compose up -d
 - [ ] Figure out how to write tests for this project
 - [ ] Setup github actions at a point
 - [ ] Structure build.sbt file more professionally
+- [ ] Create development branch named `dev` for development
