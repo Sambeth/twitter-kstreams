@@ -35,3 +35,4 @@ docker-compose up -d
 - [ ] Build simple kafka producer with twitter streams api
 - [ ] Figure out data you will need from stream filtered data
 - [ ] Build avro schema-based kafka producer with twitter streams api and schema registry
+- [ ] Figure out how to write tests for this project
