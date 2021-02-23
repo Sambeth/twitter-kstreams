@@ -14,15 +14,15 @@ export TWITTER_ACCESS_TOKEN_SECRET=your_access_secret
 ```
 
 2. Now run the below command to create your DockerFile with all the steps to setup your app image.
-This would create a Dockerfile in target/docker/ . You can use the generated Dockerfile in conjunction
-with the docker-compose.yml file to build your containers locally.
+This would create a Dockerfile in target/docker/stage . You can use the generated Dockerfile in conjunction
+with the docker-compose.yml file to build your images and run your containers locally.
 ```
 sbt docker:stage
 ```
 
-2. Run
+3. Run
 ```bash
-docker-compose --env-file ./env/.env.dev up -d
+docker-compose up -d
 ```
 
 # Project Scope

@@ -15,8 +15,6 @@ dockerEnvVars := Map(
   "TWITTER_ACCESS_TOKEN_SECRET" -> sys.env.getOrElse("TWITTER_ACCESS_TOKEN_SECRET", "default"),
 )
 dockerExposedVolumes := Seq("/opt/docker/logs")
-dockerRepository := Some("twitter-kstreams")
-dockerUsername := Some("sambeth")
 dockerUpdateLatest := true
 
 resolvers += Resolver.sonatypeRepo("releases")
