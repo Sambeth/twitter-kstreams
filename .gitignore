@@ -11,7 +11,7 @@
 
 # envs
 env/.env.dev
-env/credentials.env
+env/config.env
 
 # sbt
 # (may want to keep parts of 'project')

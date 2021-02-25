@@ -4,12 +4,15 @@ This project demonstrates how to use Kafka Streams to process and transform a st
 # Setup
 Make sure you have sbt installed or open project using Intellij IDE.
 
-1. Set up your environment variables for your twitter consumer and access keys in env/credentials.env file.
+1. Set up your environment variables for your twitter consumer and access keys in env/config.env file.
 ```
 TWITTER_CONSUMER_TOKEN_KEY=your_consumer_key
 TWITTER_CONSUMER_TOKEN_SECRET=your_consumer_secret
 TWITTER_ACCESS_TOKEN_KEY=your_access_key
 TWITTER_ACCESS_TOKEN_SECRET=your_access_secret
+BOOTSTRAP_SERVERS=localhost:9092
+TWEET_TOPIC=trends
+SCHEMA_REGISTRY_URL=http://localhost:8081
 ```
 
 2. Now run the below command to create your DockerFile with all the steps to setup your app image.

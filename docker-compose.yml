@@ -5,7 +5,7 @@ services:
     build: ./target/docker/stage/
     hostname: streams-app
     env_file:
-      - ./env/credentials.env
+      - env/config.env
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
