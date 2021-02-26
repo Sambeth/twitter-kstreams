@@ -1,7 +1,5 @@
 package com.sambeth.twitter.streams.client
 
-import java.util.Properties
-
 import com.danielasfregola.twitter4s.TwitterStreamingClient
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.entities.streaming.StreamingMessage
@@ -12,24 +10,26 @@ import org.slf4j.{Logger, LoggerFactory}
 import pureconfig.ConfigSource
 import pureconfig.generic.auto._
 
+import scala.io.Source
 import scala.jdk.CollectionConverters._
 import scala.util.Try
 
 object TwitterProducer extends App with HelperFunctions {
 
   lazy val logger: Logger = LoggerFactory.getLogger(getClass)
+
   val track: String = "bitcoin"
 
   // read config file
-  val configFile = sys.props.get("config.file").getOrElse(getClass.getResource("/producer.conf").getPath)
+  val configFileString = Source.fromResource("producer.conf").mkString("""""")
 
-  ConfigSource.file(configFile).load[ProducerAppConfig].map { config =>
+  val baseConfig = ConfigSource.string(configFileString).at("base").load[ProducerAppConfig].map { config =>
     val producerConfig: Map[String, AnyRef] = config.producerConfig.toMap
     val serializerConfig: Map[String, AnyRef] = config.serializerConfig.toMap
-    val baseConfig: Map[String, AnyRef] = producerConfig ++ serializerConfig
+    val base: Map[String, AnyRef] = producerConfig ++ serializerConfig
 
     // set up kafka producer
-    val kafkaProducer: KafkaProducer[String, String] = new KafkaProducer[String, String](baseConfig.asJava)
+    val kafkaProducer: KafkaProducer[String, String] = new KafkaProducer[String, String](base.asJava)
 
     Try {
       // set up twitter stream
@@ -38,7 +38,6 @@ object TwitterProducer extends App with HelperFunctions {
 
       // flush stream appropriately
       kafkaProducer.flush()
-      logger info s"Successfully produced a tweet about $track"
 
     }.recover {
       case error: InterruptedException => logger.error("Failed to flush and close producer", error)

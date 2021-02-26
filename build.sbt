@@ -8,6 +8,16 @@ ThisBuild / scalacOptions    ++= Seq("-language:postfixOps")
 
 mainClass in Compile := Some("com.sambeth.twitter.streams.client.TwitterProducer")
 
+mappings in Universal += {
+  val conf = (resourceDirectory in Compile).value / "application.conf"
+  conf -> "conf/application.conf"
+}
+
+mappings in Universal += {
+  val conf = (resourceDirectory in Compile).value / "producer.conf"
+  conf -> "conf/producer.conf"
+}
+
 dockerBaseImage := "openjdk:8-jre-alpine"
 maintainer := "Samuel Baafi Bokaye <sambethslim@gmail.com>"
 dockerExposedVolumes := Seq("/opt/docker/logs")

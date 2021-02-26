@@ -1,12 +1,6 @@
 version: '3.8'
 
 services:
-  streams-app:
-    build: ./target/docker/stage/
-    hostname: streams-app
-    env_file:
-      - env/config.env
-
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
     hostname: zookeeper
@@ -39,3 +33,12 @@ services:
       - "8081:8081"
     env_file:
       - ./env/schema-registry.env
+
+  streams-app:
+    build: ./target/docker/stage/
+    container_name: streams-app
+    env_file:
+      - env/config.env
+    depends_on:
+      - broker
+      - schema-registry

@@ -8,8 +8,6 @@ object Conf {
 
   case class ProducerAppConfig(producerConfig: Config,
                                serializerConfig: Config,
-                               tweetTopicName: String,
-                               generatorPeriod: FiniteDuration,
-                               generatorParallelismLevel: Int = 1)
+                               tweetTopicName: String)
 
 }
