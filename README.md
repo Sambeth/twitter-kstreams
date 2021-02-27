@@ -33,7 +33,8 @@ docker-compose up -d
 - [x] Figure out how to push image to docker hub
 - [x] Figure out how to autobuild image as update pushed to github
 - [x] Build simple kafka producer with twitter streams api
-- [ ] Figure out data you will need from stream filtered data
+- [x] Figure out data you will need from stream filtered data
+- [ ] Build graph model of twitter tweet data using arrow for neo4j graph database
 - [ ] Build avro schema-based kafka producer with twitter streams api and schema registry
 - [ ] Figure out how to write tests for this project
 - [ ] Setup github actions at a point

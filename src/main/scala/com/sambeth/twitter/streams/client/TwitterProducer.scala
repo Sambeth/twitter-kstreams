@@ -18,7 +18,7 @@ object TwitterProducer extends App with HelperFunctions {
 
   lazy val logger: Logger = LoggerFactory.getLogger(getClass)
 
-  val track: String = "bitcoin"
+  val tracking: Seq[String] = Seq("bitcoin")
 
   // read config file
   val configFileString = Source.fromResource("producer.conf").mkString("""""")
@@ -34,19 +34,20 @@ object TwitterProducer extends App with HelperFunctions {
     Try {
       // set up twitter stream
       val streamClient = TwitterStreamingClient()
-      streamClient.filterStatuses(stall_warnings = true, tracks = Seq(track))(sendTweetText(config.tweetTopicName, kafkaProducer))
+      streamClient.filterStatuses(stall_warnings = true, tracks = tracking)(sendTweetText(config.tweetTopicName, kafkaProducer))
 
       // flush stream appropriately
       kafkaProducer.flush()
 
     }.recover {
       case error: InterruptedException => logger.error("Failed to flush and close producer", error)
-      case error => logger.error(s"An unexpected error occurred while producing $track tweets", error)
+      case error => logger.error(s"An unexpected error occurred while producing $tracking related tweets", error)
     }
   }
 
   def sendTweetText(topic: String, kafkaProducer: KafkaProducer[String, String]): PartialFunction[StreamingMessage, Unit] = {
     case tweet: Tweet => {
+      tweet.
       val producerRecord: ProducerRecord[String, String] = new ProducerRecord[String, String](topic, tweet.text)
       kafkaProducer send producerRecord
     }
