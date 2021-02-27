@@ -10,9 +10,6 @@ TWITTER_CONSUMER_TOKEN_KEY=your_consumer_key
 TWITTER_CONSUMER_TOKEN_SECRET=your_consumer_secret
 TWITTER_ACCESS_TOKEN_KEY=your_access_key
 TWITTER_ACCESS_TOKEN_SECRET=your_access_secret
-BOOTSTRAP_SERVERS=localhost:9092
-TWEET_TOPIC=trends
-SCHEMA_REGISTRY_URL=http://localhost:8081
 ```
 
 2. Now run the below command to create your DockerFile with all the steps to setup your app image.
