@@ -1,8 +1,17 @@
 version: '3.8'
 
 services:
+#  streams-app:
+#    build: ./target/docker/stage/
+#    container_name: streams-app
+#    env_file:
+#      - env/config.env
+#    depends_on:
+#      - broker
+#      - schema-registry
+
   zookeeper:
-    image: "confluentinc/cp-zookeeper:6.1.0"
+    image: confluentinc/cp-zookeeper:6.1.0
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -11,7 +20,7 @@ services:
       - ./env/zookeeper.env
 
   broker:
-    image: "confluentinc/cp-kafka:6.1.0"
+    image: confluentinc/cp-server:6.1.0
     hostname: broker
     container_name: broker
     depends_on:
@@ -24,21 +33,60 @@ services:
       - ./env/broker.env
 
   schema-registry:
-    image: "confluentinc/cp-schema-registry:6.1.0"
+    image: confluentinc/cp-schema-registry:6.1.0
     hostname: schema-registry
     container_name: schema-registry
     depends_on:
+      - zookeeper
       - broker
     ports:
       - "8081:8081"
     env_file:
       - ./env/schema-registry.env
 
-  streams-app:
-    build: ./target/docker/stage/
-    container_name: streams-app
-    env_file:
-      - env/config.env
+  connect:
+    image: confluentinc/cp-kafka-connect:6.1.0
+    hostname: connect
+    container_name: connect
     depends_on:
+      - zookeeper
       - broker
       - schema-registry
+    ports:
+      - "8083:8083"
+    env_file:
+      - ./env/connect.env
+    volumes:
+    - $PWD/plugins:/usr/share/confluent-hub-components
+
+  rest-proxy:
+    image: confluentinc/cp-kafka-rest:6.0.1
+    container_name: rest-proxy
+    restart: always
+    depends_on:
+      - broker
+    env_file:
+      - ./env/rest-proxy.env
+    ports:
+      - "8082:8082"
+
+  kafka-tools:
+    image: confluentinc/cp-kafka:6.1.0
+    hostname: kafka-tools
+    container_name: kafka-tools
+    command: ["tail", "-f", "/dev/null"]
+    network_mode: "host"
+
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:6.1.0
+    hostname: control-center
+    container_name: control-center
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - connect
+    ports:
+      - "9021:9021"
+    env_file:
+      - ./env/control-center.env

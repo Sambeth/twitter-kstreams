@@ -2,7 +2,6 @@ package com.sambeth.twitter.streams.client
 
 import com.typesafe.config.Config
 
-import scala.concurrent.duration.FiniteDuration
 
 object Conf {
 
