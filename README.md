@@ -4,22 +4,7 @@ This project demonstrates how to use Kafka Streams to process and transform a st
 # Setup
 Make sure you have sbt installed or open project using Intellij IDE.
 
-1. Set up your environment variables for your twitter consumer and access keys in env/config.env file.
-```
-TWITTER_CONSUMER_TOKEN_KEY=your_consumer_key
-TWITTER_CONSUMER_TOKEN_SECRET=your_consumer_secret
-TWITTER_ACCESS_TOKEN_KEY=your_access_key
-TWITTER_ACCESS_TOKEN_SECRET=your_access_secret
-```
-
-2. Now run the below command to create your DockerFile with all the steps to setup your app image.
-This would create a Dockerfile in target/docker/stage . You can use the generated Dockerfile in conjunction
-with the docker-compose.yml file to build your images and run your containers locally.
-```
-sbt docker:stage
-```
-
-3. Run
+1. Run
 ```bash
 docker-compose up -d
 ```
