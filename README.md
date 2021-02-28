@@ -20,9 +20,9 @@ docker-compose up -d
 - [x] Build simple kafka producer with twitter streams api
 - [x] Figure out data you will need from stream filtered data
 - [x] Changed kakfa avro producer scala code to using kafka connect
-- [ ] Add volumes to docker containers
+- [x] Add volumes to docker containers
 - [ ] Build graph model of twitter tweet data using arrow for neo4j graph database
-- [ ] Build avro schema-based kafka producer with twitter streams api and schema registry
+- [ ] ~~Build avro schema-based kafka producer with twitter streams api and schema registry~~
 - [ ] Figure out how to write tests for this project
 - [ ] Setup github actions at a point
 - [ ] Structure build.sbt file more professionally

@@ -18,6 +18,9 @@ services:
       - "2181:2181"
     env_file:
       - ./env/zookeeper.env
+    volumes:
+      - $PWD/zookeeper/data:/var/lib/zookeeper/data
+      - $PWD/zookeeper/log:/var/lib/zookeeper/log
 
   broker:
     image: confluentinc/cp-server:6.1.0
@@ -31,6 +34,8 @@ services:
       - "9101:9101"
     env_file:
       - ./env/broker.env
+    volumes:
+      - $PWD/broker/data:/var/lib/kafka/data
 
   schema-registry:
     image: confluentinc/cp-schema-registry:6.1.0

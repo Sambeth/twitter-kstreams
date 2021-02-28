@@ -12,6 +12,8 @@
 # envs
 env/.env.dev
 env/config.env
+broker/
+zookeeper/
 
 # sbt
 # (may want to keep parts of 'project')
